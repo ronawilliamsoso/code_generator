@@ -48,9 +48,9 @@ public class GeneratorSqlmap {
 //	private static String password = "dev@pvd123";
 	
 	
-	private static String url = "jdbc:mysql://47.95.4.132:3306/eos";
-	private static String username = "eos";
-	private static String password = "Wang-123";
+	private static String url = "jdbc:mysql://127.0.0.1:3306/wangwei?serverTimezone=UTC";
+	private static String username = "wangwei";
+	private static String password = "wangwei";
 	
 //	
 //	private static String url = "jdbc:mysql://rm-2zerzfys20019ig27o.mysql.rds.aliyuncs.com:3306/boss";
@@ -60,7 +60,7 @@ public class GeneratorSqlmap {
  
  
 	
-	private static String driverClass = "com.mysql.jdbc.Driver";
+	private static String driverClass = "com.mysql.cj.jdbc.Driver";
 	
 
 	private static String baseDao = BaseDao.class.getName();
@@ -74,16 +74,19 @@ public class GeneratorSqlmap {
 		boolean isGenerator=true;
 		List lst=null;
  
-		lst=Arrays.asList("eos_price","eth_price");
+		lst=Arrays.asList("order");
 		//lst=new ArrayList();
 		//FileInputStream in = generatorSqlmap.genneratorCloud(url, username, password, driverClass, "provider2", "com.vcg.provider",lst,isGenerator);
-		FileInputStream in = generatorSqlmap.genneratorCloud(url, username, password, driverClass, "eos", "com.vcg.uc",lst,isGenerator);
-		delAllFile("d:/output/");
+		FileInputStream in = generatorSqlmap.genneratorCloud(url, username, password, driverClass, "order", "com.vcg.order",lst,isGenerator);
+		//delAllFile("d:/output/");
+		//IOUtils.copy(in, new FileOutputStream(new File("d:/output/outstorage.zip")));
+		//System.err.println("生成ok....");
+		delAllFile("/Users/wei.wang/Documents/work/java/generated/");
 		
-		IOUtils.copy(in, new FileOutputStream(new File("d:/output/outstorage.zip")));
-		System.err.println("生成ok....");
+		IOUtils.copy(in, new FileOutputStream(new File("/Users/wei.wang/Documents/work/java/generated/outstorage.zip")));
+		System.err.println("code is generated.");
 		
-		unZipFiles("d:/output/outstorage.zip","d:/output/");
+		unZipFiles("/Users/wei.wang/Documents/work/java/generated/outstorage.zip","/Users/wei.wang/Documents/work/java/generated/");
 		
 	}
 	
